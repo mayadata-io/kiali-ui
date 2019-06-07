@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import RenderPage from './RenderPage';
 import { RouteComponentProps } from 'react-router';
-import Masthead from './Masthead/Masthead';
+// import Masthead from './Masthead/Masthead';
 import Menu from './Menu';
-import { Page, PageHeader, PageSection, Brand } from '@patternfly/react-core';
+import { Page, PageHeader, PageSection } from '@patternfly/react-core';
 
 import MessageCenterContainer from '../../components/MessageCenter/MessageCenter';
-import { kialiLogo, serverConfig } from '../../config';
+import { serverConfig } from '../../config';
 import { KialiAppState } from '../../store/Store';
 import { KialiAppAction } from '../../actions/KialiAppAction';
 import UserSettingsThunkActions from '../../actions/UserSettingsThunkActions';
@@ -89,25 +89,29 @@ class Navigation extends React.Component<PropsType, NavigationState> {
 
     const Header = (
       <PageHeader
-        logo={<Brand src={kialiLogo} alt="Kiali Logo" />}
-        toolbar={<Masthead />}
-        showNavToggle={true}
-        onNavToggle={isMobileView ? this.onNavToggleMobile : this.onNavToggleDesktop}
-        isNavOpen={isMobileView ? isNavOpenMobile : isNavOpenDesktop || !this.props.navCollapsed}
+        className="header"
+        topNav={
+          <Menu
+            isNavOpen={isMobileView ? isNavOpenMobile : isNavOpenDesktop || !this.props.navCollapsed}
+            jaegerIntegration={this.props.jaegerIntegration}
+            location={this.props.location}
+            jaegerUrl={this.props.jaegerUrl}
+          />
+        }
       />
     );
 
-    const Sidebar = (
-      <Menu
-        isNavOpen={isMobileView ? isNavOpenMobile : isNavOpenDesktop || !this.props.navCollapsed}
-        jaegerIntegration={this.props.jaegerIntegration}
-        location={this.props.location}
-        jaegerUrl={this.props.jaegerUrl}
-      />
-    );
+    //    const Sidebar = (
+    //       <Menu
+    //        isNavOpen={isMobileView ? isNavOpenMobile : isNavOpenDesktop || !this.props.navCollapsed}
+    //        jaegerIntegration={this.props.jaegerIntegration}
+    //        location={this.props.location}
+    //        jaegerUrl={this.props.jaegerUrl}
+    //      />
+    //    );
 
     return (
-      <Page header={Header} sidebar={Sidebar} onPageResize={this.onPageResize}>
+      <Page header={Header} onPageResize={this.onPageResize}>
         <MessageCenterContainer drawerTitle="Message Center" />
         <PageSection variant={'light'}>
           <RenderPage needScroll={this.isContentScrollable()} />
