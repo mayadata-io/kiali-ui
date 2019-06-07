@@ -2,7 +2,7 @@ import _ from 'lodash';
 import * as React from 'react';
 import { matchPath } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Nav, NavList, NavItem, PageSidebar } from '@patternfly/react-core';
+import { Nav, NavList, NavItem } from '@patternfly/react-core';
 import { ExternalLinkAltIcon } from '@patternfly/react-icons';
 
 import history from '../../app/History';
@@ -58,7 +58,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       ) : (
         <NavItem isActive={activeItem === item} key={item.to}>
           <Link id={item.title} to={item.to} onClick={() => history.push(item.to)}>
-            {item.title}
+            <span className={'header-icon ' + item.iconClass} />
           </Link>
         </NavItem>
       );
@@ -66,15 +66,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
   };
 
   render() {
-    const { isNavOpen } = this.props;
-
     const PageNav = (
       <Nav onSelect={() => undefined} onToggle={() => undefined} aria-label="Nav">
-        <NavList>{this.renderMenuItems()}</NavList>
+        <NavList variant="horizontal">{this.renderMenuItems()}</NavList>
       </Nav>
     );
 
-    return <PageSidebar isNavOpen={isNavOpen} nav={PageNav} />;
+    return PageNav;
   }
 }
 

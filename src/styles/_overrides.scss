@@ -37,10 +37,12 @@ $grid-float-breakpoint: $screen-sm-min !default;
 
 .pf-c-page {
   &__header {
-    background-color: var(--pf-global--BackgroundColor--dark-200);
-    background-image: url('../img/pfbg_2000.jpg');
+    // background-color: var(--pf-global--BackgroundColor--dark-200);
+    // background-image: url('../img/pfbg_2000.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: white;
+    height: 10px;
   }
 
   &__main {
@@ -61,6 +63,34 @@ $grid-float-breakpoint: $screen-sm-min !default;
   }
 }
 
+.pf-c-page__header-nav {
+  background-color: white !important;
+  height: 37px;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.pf-c-nav__horizontal-list .pf-c-nav__link {
+  color: gray;
+}
+
+.pf-c-nav__horizontal-list .pf-c-nav__link.pf-m-current {
+  color: #0088ce;
+}
+
+.header-icon {
+  font-size: 20px;
+}
+
+.pf-c-page__header {
+  min-height: 45px;
+}
+.pf-c-page__header-brand {
+  grid-column: 2 / 2;
+}
+#service_actions {
+  display: none;
+}
 .pf-c-page__sidebar {
   --pf-c-page__sidebar--BackgroundColor: #{$color-pf-black-900};
   --pf-c-page__sidebar--PaddingBottom: 0;
