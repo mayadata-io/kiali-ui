@@ -91,6 +91,22 @@ $grid-float-breakpoint: $screen-sm-min !default;
 #service_actions {
   display: none;
 }
+
+.pf-c-login {
+  display: none;
+}
+.login-pf {
+  background: none;
+}
+.login-pf-page .login-pf-page-header {
+  display: none;
+}
+.login-pf-page .card-pf {
+  display: none;
+}
+.pf-c-background-image {
+  display: none;
+}
 .pf-c-page__sidebar {
   --pf-c-page__sidebar--BackgroundColor: #{$color-pf-black-900};
   --pf-c-page__sidebar--PaddingBottom: 0;
